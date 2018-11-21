@@ -35,6 +35,7 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import androidx.navigation.findNavController
 import com.raywenderlich.android.bookmanstreasure.ui.MainActivityDelegate
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -68,4 +69,6 @@ class MainActivity : AppCompatActivity(), MainActivityDelegate {
   override fun enableNavDrawer(enable: Boolean) {
     drawerLayout.isEnabled = enable
   }
+
+  override fun onSupportNavigateUp() = findNavController(R.id.navHostFragment).navigateUp()
 }
