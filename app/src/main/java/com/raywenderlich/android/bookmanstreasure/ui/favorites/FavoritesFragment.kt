@@ -87,7 +87,7 @@ class FavoritesFragment : Fragment() {
   private fun initAdapter() {
     val adapter = WorksAdapter(Glide.with(this)) {
       findNavController().navigate(
-              R.id.actionBookDetails,
+              R.id.bookDetailsGraph,
               WorkDetailsViewModel.createArguments(it)
       )
     }
