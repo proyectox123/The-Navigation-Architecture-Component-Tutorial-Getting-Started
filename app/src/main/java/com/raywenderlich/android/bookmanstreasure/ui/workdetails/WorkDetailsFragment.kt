@@ -35,6 +35,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.raywenderlich.android.bookmanstreasure.R
 import com.raywenderlich.android.bookmanstreasure.data.Author
@@ -132,7 +133,7 @@ class WorkDetailsFragment : Fragment() {
 
     rvEditions.adapter = adapter
     adapter.itemClickListener = {
-      //TODO Implement navigation to edition details
+      findNavController().navigate(R.id.actionShowEdition)
     }
 
     viewModel.data.observe(this, Observer {

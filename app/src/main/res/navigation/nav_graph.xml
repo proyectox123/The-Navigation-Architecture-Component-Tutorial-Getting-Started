@@ -9,6 +9,38 @@
         android:id="@+id/bookSearchFragment"
         android:name="com.raywenderlich.android.bookmanstreasure.ui.booksearch.BookSearchFragment"
         android:label="Book Search Fragment"
-        tools:layout="@layout/fragment_book_search"/>
+        tools:layout="@layout/fragment_book_search">
+
+        <action
+            android:id="@+id/actionBookDetails"
+            app:destination="@id/workDetailsFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/workDetailsFragment"
+        android:name="com.raywenderlich.android.bookmanstreasure.ui.workdetails.WorkDetailsFragment"
+        android:label="work_details_fragment"
+        tools:layout="@layout/fragment_work_details" >
+        <action
+            android:id="@+id/actionShowEdition"
+            app:destination="@id/bookDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.raywenderlich.android.bookmanstreasure.ui.favorites.FavoritesFragment"
+        android:label="FavoritesFragment"
+        tools:layout="@layout/fragment_favorites">
+        <action
+            android:id="@+id/actionBookDetails"
+            app:destination="@id/workDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/bookDetailsFragment"
+        android:name="com.raywenderlich.android.bookmanstreasure.ui.bookdetails.BookDetailsFragment"
+        android:label="BookDetailsFragment"
+        tools:layout="@layout/fragment_book_details"/>
 
 </navigation>

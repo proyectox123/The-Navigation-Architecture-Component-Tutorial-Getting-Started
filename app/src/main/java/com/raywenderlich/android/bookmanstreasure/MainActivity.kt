@@ -36,8 +36,11 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.raywenderlich.android.bookmanstreasure.ui.MainActivityDelegate
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 
 class MainActivity : AppCompatActivity(), MainActivityDelegate {
 
@@ -63,7 +66,7 @@ class MainActivity : AppCompatActivity(), MainActivityDelegate {
     drawerLayout.addDrawerListener(toggle)
     toggle.syncState()
 
-    //TODO setup Navigation Drawer menu item actions
+    drawerLayout.navView.setupWithNavController(navHostFragment.findNavController())
   }
 
   override fun enableNavDrawer(enable: Boolean) {
