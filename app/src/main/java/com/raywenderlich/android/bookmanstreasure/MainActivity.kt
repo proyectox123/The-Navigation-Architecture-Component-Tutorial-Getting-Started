@@ -30,6 +30,7 @@
 
 package com.raywenderlich.android.bookmanstreasure
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
@@ -38,6 +39,7 @@ import android.support.v7.widget.Toolbar
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.raywenderlich.android.bookmanstreasure.destinations.AuthorDetailsNavigator
 import com.raywenderlich.android.bookmanstreasure.ui.MainActivityDelegate
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
@@ -49,7 +51,19 @@ class MainActivity : AppCompatActivity(), MainActivityDelegate {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
-    //TODO initialize navigation graph
+    val destination = AuthorDetailsNavigator(navHostFragment.childFragmentManager)
+    navHostFragment.findNavController().navigatorProvider.addNavigator(destination)
+
+    val inflater = navHostFragment.findNavController().navInflater
+    val graph = inflater.inflate(R.navigation.nav_graph)
+    navHostFragment.findNavController().graph = graph
+
+    findNavController(R.id.navHostFragment).onHandleDeepLink(intent)
+  }
+
+  override fun onNewIntent(intent: Intent?) {
+    super.onNewIntent(intent)
+    findNavController(R.id.navHostFragment).onHandleDeepLink(intent)
   }
 
   override fun onBackPressed() {

@@ -41,6 +41,7 @@ import com.raywenderlich.android.bookmanstreasure.R
 import com.raywenderlich.android.bookmanstreasure.data.Author
 import com.raywenderlich.android.bookmanstreasure.data.Work
 import com.raywenderlich.android.bookmanstreasure.source.NetworkState
+import com.raywenderlich.android.bookmanstreasure.ui.authordetails.AuthorDetailsViewModel
 import com.raywenderlich.android.bookmanstreasure.ui.bookdetails.BookDetailsViewModel
 import com.raywenderlich.android.bookmanstreasure.util.CoverSize
 import com.raywenderlich.android.bookmanstreasure.util.initToolbar
@@ -117,7 +118,10 @@ class WorkDetailsFragment : Fragment() {
 
       val adapter = AuthorsAdapter(getAuthors(work))
       adapter.itemCLickListener = {
-        //TODO implement navigation to Author details
+        findNavController().navigate(
+                R.id.actionShowAuthor,
+                AuthorDetailsViewModel.createArguments(it)
+        )
       }
 
       rvAuthors.adapter = adapter

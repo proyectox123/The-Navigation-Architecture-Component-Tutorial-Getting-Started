@@ -137,7 +137,7 @@ class BookSearchFragment : Fragment() {
     rvBooks.adapter = adapter
     adapter.itemClickListener = {
       findNavController().navigate(
-              R.id.actionBookDetails,
+              R.id.bookDetailsGraph,
               WorkDetailsViewModel.createArguments(it)
       )
     }
