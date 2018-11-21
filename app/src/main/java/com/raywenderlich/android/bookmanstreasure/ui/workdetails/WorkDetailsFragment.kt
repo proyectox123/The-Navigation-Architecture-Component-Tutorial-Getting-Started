@@ -41,6 +41,7 @@ import com.raywenderlich.android.bookmanstreasure.R
 import com.raywenderlich.android.bookmanstreasure.data.Author
 import com.raywenderlich.android.bookmanstreasure.data.Work
 import com.raywenderlich.android.bookmanstreasure.source.NetworkState
+import com.raywenderlich.android.bookmanstreasure.ui.bookdetails.BookDetailsViewModel
 import com.raywenderlich.android.bookmanstreasure.util.CoverSize
 import com.raywenderlich.android.bookmanstreasure.util.initToolbar
 import com.raywenderlich.android.bookmanstreasure.util.loadCover
@@ -133,7 +134,10 @@ class WorkDetailsFragment : Fragment() {
 
     rvEditions.adapter = adapter
     adapter.itemClickListener = {
-      findNavController().navigate(R.id.actionShowEdition)
+      findNavController().navigate(
+              R.id.actionShowEdition,
+              BookDetailsViewModel.createArguments(it)
+      )
     }
 
     viewModel.data.observe(this, Observer {
